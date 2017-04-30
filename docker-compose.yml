@@ -2,7 +2,7 @@ version: '2'
 
 services:
         nginx:
-          image: sampige-nginx
+          image: sampige/nginx:0.0.1
           restart: always
           ports:
             - "80:80"
@@ -11,7 +11,7 @@ services:
             - "gnukhata"
 
         productivity:
-          image: sampige-productivity
+          image: sampige/productivity:0.0.1
           restart: always
 
         gnukhata:
