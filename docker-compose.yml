@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+        nginx:
+          image: sampige-nginx
+          restart: always
+          ports:
+            - "80:80"
+          depends_on:
+            - "productivity"
+            - "gnukhata"
+
+        productivity:
+          image: sampige-productivity
+          restart: always
+
+        gnukhata:
+          image: digitalfreedom/gnukhata:v4.0
+          restart: always
+          ports:
+            - "8080:80"
+
