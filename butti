@@ -48,6 +48,8 @@ def butti_status():
 
 
 def update():
+    dir = os.path.dirname(os.path.realpath(__file__))
+    os.chdir(dir)
     cmd = ["git", "pull"]
     subprocess.call(cmd)
 

@@ -23,4 +23,6 @@ $ ./butti link
 $ butti start  # start butti and its services
 $ butti stop   # stop butti and its services
 $ butti status # see the status of butti servivces
+$ butti update # updates itself
+$ butti -h     # see help for all available commands
 ```
