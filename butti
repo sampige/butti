@@ -1,0 +1,60 @@
+#!/usr/bin/env python
+
+import argparse
+import os
+import subprocess
+
+parser = argparse.ArgumentParser(
+  description="manage butti and its services"
+)
+
+parser.add_argument(
+    'command', action="store",
+    choices=["link", "start", "stop", "status"]
+)
+
+args = parser.parse_args()
+
+
+def link_command():
+    src = os.path.abspath('./butti')
+    dst = '/usr/bin/butti'
+    os.symlink(src, dst)
+    print "Symlink created successfully. You can now run `butti` " + \
+          "command to manage butti and its services"
+
+
+def start_butti():
+    compose_file = os.path.realpath(__file__).replace(
+        "/butti", "/docker-compose.yml"
+    )
+    cmd = ["docker-compose", "-f", compose_file, "up", "-d"]
+    subprocess.call(cmd)
+    print "butti started"
+
+
+def stop_butti():
+    compose_file = os.path.realpath(__file__).replace(
+        "/butti", "/docker-compose.yml"
+    )
+    cmd = ["docker-compose", "-f", compose_file, "down"]
+    subprocess.call(cmd)
+    print "butti stopped"
+
+
+def butti_status():
+    cmd = ["docker", "ps", "-a"]
+    subprocess.call(cmd)
+
+
+if __name__ == "__main__":
+    if args.command == "link":
+        link_command()
+    elif args.command == "start":
+        start_butti()
+    elif args.command == "stop":
+        stop_butti()
+    elif args.command == "status":
+        butti_status()
+    else:
+        print "Nothing to do"

@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+        nginx:
+          image: sampige-nginx
+          restart: always
+          ports:
+            - "80:80"
+          depends_on:
+            - "productivity"
+            - "gnukhata"
+
+        productivity:
+          image: sampige-productivity
+          restart: always
