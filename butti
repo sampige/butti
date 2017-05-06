@@ -25,8 +25,9 @@ def link_command():
 
 
 def start_butti():
-    compose_file = os.path.realpath(__file__).replace(
-        "/butti", "/docker-compose.yml"
+    compose_file = os.path.join(
+        os.path.dirname(os.path.realpath(__file__)),
+        "docker-compose.yml"
     )
     cmd = ["docker-compose", "-f", compose_file, "up", "-d"]
     subprocess.call(cmd)

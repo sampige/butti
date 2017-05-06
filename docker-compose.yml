@@ -11,7 +11,7 @@ services:
             - "gnukhata"
 
         productivity:
-          image: sampige/productivity:0.0.6
+          image: sampige/productivity:latest
           restart: always
 
         gnukhata:
