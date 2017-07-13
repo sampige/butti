@@ -2,13 +2,14 @@ version: '2'
 
 services:
         nginx:
-          image: sampige/nginx:0.0.1
+          image: sampige/nginx:0.0.2
           restart: always
           ports:
             - "80:80"
           depends_on:
             - "productivity"
             - "gnukhata"
+            - "libreoffice-calc"
 
         productivity:
           image: sampige/productivity:latest
@@ -19,4 +20,8 @@ services:
           restart: always
           ports:
             - "8080:80"
+
+        libreoffice-calc:
+          image: sampige/libreoffice-calc:0.0.3
+          restart: always
 
